@@ -99,6 +99,10 @@ class Concatenate:
         # Output to file
         with open('concatenate.csv', mode='w') as concat_file:
             concat_writer = csv.writer(concat_file, delimiter=',')
-            # concat_writer.writerow(['x', 'y']) # csv Header
+            row_header = [] # csv header
+            for i in range(self.nballs):
+                row_header.append("x"+str(i+1))
+                row_header.append("y"+str(i+1))
+            concat_writer.writerow(row_header)
             for i in range(len(self.Xt)):
                 concat_writer.writerow(self.Xt[i].reshape(self.nballs*2,))
